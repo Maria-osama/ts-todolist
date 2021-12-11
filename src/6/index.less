@@ -1,6 +1,40 @@
 /* DO NOT CHANGE THIS ROOT CLASS NAME*/
 .TASK_6 {
 
-    /* Styles goes here */
-    
+    .search-input {
+    float: right;
+    font: inherit;
+    font-size: 1rem;
+    padding: 0.2rem;
+    border-radius: 4px;
+    background-color: #f7f5ef;
+    border: none;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    margin-bottom: 0.5rem;
+    }
+    .todos {
+        list-style: none;
+        margin-right: 10rem;
+        padding: 0;
+        width: 20rem;
+      
+      .item {
+        margin: 1rem 0;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+        padding: 1rem;
+        background-color: #f7f5ef;
+        .todoBtn{
+            float: right;
+            font: inherit;
+            color: #fff;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+        .delete { background-color: indianred;}
+        .done { background-color: rgb(26, 155, 26);}
+      }
+    }
 }
