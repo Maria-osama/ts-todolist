@@ -1,22 +1,19 @@
 
-import React, { useContext } from 'react';
-import { TodosContext } from '../store/todos-context';
-import '../styling/TodoItem.css';
+import React from 'react';
 
-const SingleTodo: React.FC<{ todo: string; onRemoveTodo: () => void }> = (props) => {
+const SingleTodo: React.FC<{
+     todo: string; 
+     isNew: boolean; 
+     onRemoveTodo: () => void;
+     onDoneTodo: () => void }> = (props) => {
 
-    const todosCtx = useContext(TodosContext)
-    
-    const doneTodoItem = () => {
-
-    }
     return (
         <>
             <li className='item'>
                 {props.todo}
                 <>
-                    <button onClick={doneTodoItem}>Done</button>
-                    <button onClick={props.onRemoveTodo}>Delete</button>
+                   {props.isNew && <button className='todoBtn done' onClick={props.onDoneTodo}>Done</button>}
+                    <button className='todoBtn delete' onClick={props.onRemoveTodo}>Delete</button>
                 </>
             </li>
 
