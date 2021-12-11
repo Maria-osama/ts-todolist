@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
+import DoneList from "./components/doneList";
 import NewTodo from "./components/newTodo";
-import Todos from './components/todosList';
-
+import Search from "./components/search";
+import TodosList from './components/todosList';
+import "./index.less";
+import TodosContextProvider from "./store/todos-context";
 
 // Components
 /*
@@ -13,19 +16,23 @@ import Todos from './components/todosList';
 /*
 * Use this less file to create your own styles.
 */
-import "./index.less";
-import TodosContextProvider from "./store/todos-context";
 
 //
+
 const Task6 = () => {
 
-    return (
-      <TodosContextProvider>
-        <NewTodo />
-        <Todos />
-      </TodosContextProvider>
-    );
-  
+  return (
+    <TodosContextProvider>
+      <Search />
+      <NewTodo />
+      
+      <div style={{ display: 'flex' }}>
+        <TodosList />
+        <DoneList />
+      </div>
+    </TodosContextProvider>
+  );
+
 }
 
 export default Task6;
