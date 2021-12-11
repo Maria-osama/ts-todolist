@@ -6,7 +6,9 @@ const TodosList: React.FC = () => {
 
     const todosCtx = useContext(TodosContext)
     const list = todosCtx.items.filter(item => item.isNew === true)
-    const listFromSearch = todosCtx.searchResult.filter(item => item.isNew === true)
+    const listFromSearch = list.filter(item => 
+        item.text.trim().toLowerCase().includes(todosCtx.searchText.trim().toLowerCase())
+        )
     const todoItems = todosCtx.isSearchActive ? listFromSearch : list
     return (
         <div>
