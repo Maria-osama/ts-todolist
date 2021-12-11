@@ -1,6 +1,6 @@
 import React, { useRef, useContext } from 'react';
 import { TodosContext } from '../store/todos-context';
-import '../styling/NewTodo.css';
+import '../styling/NewTodo.less';
 
 const NewTodo: React.FC = () => {
 
@@ -21,7 +21,7 @@ const NewTodo: React.FC = () => {
     return (
         <form className="form" onSubmit={submitHandler}>
             <label htmlFor='text'>Todo Name</label>
-            <input id='text' type='text' ref={inputRef} />
+            <input id='text' type='text' ref={inputRef} placeholder='Type here' />
             <button>Add Todo</button>
         </form>
     )
