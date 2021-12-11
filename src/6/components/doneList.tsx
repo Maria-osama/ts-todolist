@@ -6,7 +6,8 @@ const DoneList: React.FC = () => {
 
     const todosCtx = useContext(TodosContext)
     const doneList = todosCtx.items.filter(item => item.isNew === false)
-    const doneListFromSearch = todosCtx.searchResult.filter(item => item.isNew === false)
+    const doneListFromSearch = doneList.filter(item => 
+        item.text.trim().toLowerCase().includes(todosCtx.searchText.trim().toLowerCase()))
     const todoItems = todosCtx.isSearchActive ? doneListFromSearch : doneList
 
     return (
