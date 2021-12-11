@@ -3,7 +3,7 @@ import Todo from "../models/todo";
 
 type TodosContextObj = {
     items: Todo[];
-    searchResult: Todo[];
+    searchText: string;
     addTodo: (text: string) => void;
     removeTodo: (id: number) => void;
     doneTodo: (id: number) => void;
@@ -14,7 +14,7 @@ type TodosContextObj = {
 
 export const TodosContext = React.createContext<TodosContextObj>({
     items: [],
-    searchResult: [],
+    searchText: '',
     addTodo: () => { },
     removeTodo: (id: number) => { },
     doneTodo: (id: number) => { },
@@ -26,7 +26,7 @@ export const TodosContext = React.createContext<TodosContextObj>({
 const TodosContextProvider: React.FC = (props) => {
     const [todos, setTodos] = useState<Todo[]>([])
     const [isSearchActive, setIsSearchActive] = useState(false)
-    const [searchTodos, setSearchTodos] = useState<Todo[]>([])
+    const [searchText, setSearchText] = useState('')
 
     const newTodo = (todoText: string) => {
         setTodos(prevState => {
@@ -57,17 +57,18 @@ const TodosContextProvider: React.FC = (props) => {
 
     const searchHandler = (text: string) => {
         if (text.trim().length > 0) {
-            let searchResult = todos.filter(item => item.text.trim().toLowerCase().includes( text.trim().toLowerCase()))
 
-            setSearchTodos(searchResult)
+            setSearchText(text)
             setIsSearchActive(true)
             
-        } else setIsSearchActive(false)
+        } else {
+            setSearchText('')
+            setIsSearchActive(false)}
     }
 
     const contextValue: TodosContextObj = {
         items: todos,
-        searchResult: searchTodos,
+        searchText: searchText,
         addTodo: newTodo,
         removeTodo: removeTodo,
         doneTodo: doneTodo,
